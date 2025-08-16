@@ -38,6 +38,7 @@ return {
         "eslint_d",
         "stylelint",
         "pylint",
+        "luacheck",
       },
     })
   end,
