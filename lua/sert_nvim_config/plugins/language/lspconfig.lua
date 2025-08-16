@@ -76,6 +76,10 @@ return {
 
 
     lspconfig.rust_analyzer.setup({
+      checkOnSave = true,
+      check = {
+        command = "clippy",
+      },
       commands = {
         ExpandMacro = {
           function()
