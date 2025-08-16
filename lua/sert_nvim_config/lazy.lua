@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
-    { import = "sert_nvim_config.colorschemes" },
+    { import = "sert_nvim_config.plugins.editor.astro" },
     { import = "sert_nvim_config.plugins.editor" },
     { import = "sert_nvim_config.plugins.language" }
   },
@@ -27,3 +27,6 @@ require("lazy").setup(
     },
   }
 )
+
+local astronvim = require("astronvim")
+astronvim.init()
