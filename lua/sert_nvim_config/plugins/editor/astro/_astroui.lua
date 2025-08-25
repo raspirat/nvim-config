@@ -37,7 +37,7 @@ return {
     colorscheme = "astrotheme",
     folding = {
       enabled = function(bufnr) return require("astrocore.buffer").is_valid(bufnr) end,
-      methods = { "lsp", "treesitter", "indent" },
+      methods = {},
     },
     icons = {
       ActiveLSP = "",
