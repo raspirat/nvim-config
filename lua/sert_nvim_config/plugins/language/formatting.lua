@@ -28,11 +28,16 @@ return {
         cpp = { "clang-format" },
         c = { "clang-format" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      },
+      format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+        return {
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 1000,
+        }
+      end
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>lf", function()
@@ -42,5 +47,16 @@ return {
         timeout_ms = 1000,
       })
     end, { desc = "Format file or range (in visual mode)" })
+
+    vim.api.nvim_create_user_command("ToggleFormat", function(args)
+      if args.bang then
+        vim.b.disable_autoformat = not vim.b.disable_autoformat
+      else
+        vim.g.disable_autoformat = not vim.g.disable_autoformat
+      end
+    end, {
+      desc = "toggle autoformat-on-save",
+      bang = true,
+    })
   end,
 }
