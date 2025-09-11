@@ -44,6 +44,7 @@ return {
         "tree-sitter-cli",
         "bibtex-tidy",
         "clang-format",
+        "luacheck",
       },
     })
   end,
