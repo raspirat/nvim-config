@@ -26,6 +26,7 @@ return {
         "lua_ls",
         "sqlls",
         "kotlin_language_server",
+        "ltex_plus",
       },
     })
 
@@ -38,6 +39,8 @@ return {
         "stylelint",
         "pylint",
         "luacheck",
+        "tree-sitter-cli",
+        "bibtex-tidy",
       },
     })
   end,
