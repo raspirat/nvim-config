@@ -1,6 +1,8 @@
 local astroui_foldexpr = "v:lua.require'astroui.folding'.foldexpr()"
 return {
   "AstroNvim/astroui",
+  lazy = false,
+  priority = 5000,
   specs = {
     {
       "AstroNvim/astrocore",

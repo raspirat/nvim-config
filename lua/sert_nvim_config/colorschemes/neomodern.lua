@@ -1,7 +1,8 @@
 return {
   "cdmill/neomodern.nvim",
+  name = "neomodern",
   lazy = false,
-  priority = 1000,
+  priority = 10000,
   config = function()
     require("neomodern").setup({
       -----MAIN OPTIONS-----
@@ -89,6 +90,6 @@ return {
     })
     -- Convenience function that simply calls `:colorscheme <theme>` with the theme
     -- specified in your config.
-    require("neomodern").load()
+    -- require("neomodern").load()
   end,
 }
