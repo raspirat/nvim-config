@@ -30,5 +30,5 @@ require("lazy").setup(
 
 require('mini.move').setup()
 
-local astronvim = require("astronvim")
-astronvim.init()
+-- local astronvim = require("astronvim")
+-- astronvim.init()
