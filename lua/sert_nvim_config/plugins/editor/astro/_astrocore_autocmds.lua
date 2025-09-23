@@ -38,7 +38,7 @@ return {
                 -- If any visible windows are not sidebars, early return
                 if not sidebar_fts[filetype] then
                   return
-                -- If the visible window is a sidebar
+                  -- If the visible window is a sidebar
                 else
                   -- only count filetypes once, so remove a found sidebar from the detection
                   sidebar_fts[filetype] = nil
@@ -189,7 +189,7 @@ return {
           desc = "Disable certain functionality on very large files",
           pattern = "AstroLargeBuf",
           callback = function(args)
-            vim.opt_local.list = false -- disable list chars
+            vim.opt_local.list = false         -- disable list chars
             vim.b[args.buf].autoformat = false -- disable autoformat on save
             vim.b[args.buf].completion = false -- disable completion
           end,
