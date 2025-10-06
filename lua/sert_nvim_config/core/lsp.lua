@@ -150,7 +150,7 @@ vim.lsp.config('ltex_plus', {
 
         local stdout, stderr = {}, {}
         local jid = vim.fn.jobstart({
-          "latexmk", "-pdf", "-output-directory=./build", "-interaction=nonstopmode", "-synctex=1", basename
+          "latexmk", "-pdf", "-interaction=nonstopmode", "-synctex=1", basename
         }, {
           cwd = cwd,
           stdout_buffered = true,

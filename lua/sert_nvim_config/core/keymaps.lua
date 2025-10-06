@@ -18,3 +18,10 @@ keymap.set("n", "<leader>etl", "<cmd>tabn<CR>", { desc = "Go to next tab" })    
 keymap.set("n", "<leader>eth", "<cmd>tabp<CR>", { desc = "Go to previous tab" })                             -- go to previous tab
 keymap.set("n", "<leader>etf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })             -- move current buffer to new tab
 keymap.set("n", "<leader>td", "<cmd>Telescope diagnostics<CR>", { desc = "Open current buffer in new tab" }) -- diagnostics list to jump
+
+function insertFullPath()
+  local filepath = vim.fn.expand('%:p')
+  vim.fn.setreg('+', filepath) -- write to clippoard
+end
+
+keymap.set('n', '<leader>pc', insertFullPath, { desc = "Copy filepath", noremap = true, silent = true })
