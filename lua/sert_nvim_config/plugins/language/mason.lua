@@ -35,7 +35,6 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "rustfmt",
         "luacheck",
         "ktlint",
         "eslint_d",
