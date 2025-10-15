@@ -75,7 +75,7 @@ vim.lsp.config('rust_analyzer', {
         vim.lsp.buf_request_all(
           bufnr,
           "rust-analyzer/expandMacro",
-          vim.lsp.util.make_position_params(),
+          vim.lsp.util.make_position_params(0, client.offset_encoding or 'utf-16'),
           function(results)
             local result = results[1].result
 
