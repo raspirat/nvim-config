@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
-    keymap.set("n", "<leader>lme", ":MacroExpand<CR>", { desc = "Expand rust macro under cursor" })
+    keymap.set("n", "<leader>lme", ":RustLsp expandMacro<CR>", { desc = "Expand rust macro under cursor" })
   end,
 })
 
@@ -67,58 +67,6 @@ vim.lsp.config('*', {
     }
   },
   root_markers = { '.git' },
-});
-
-vim.lsp.config('rust_analyzer', {
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_user_command("MacroExpand", function()
-        vim.lsp.buf_request_all(
-          bufnr,
-          "rust-analyzer/expandMacro",
-          vim.lsp.util.make_position_params(0, client.offset_encoding or 'utf-16'),
-          function(results)
-            local result = results[1].result
-
-            if not result or not result.expansion then
-              vim.notify("No macro expansion found", vim.log.levels.WARN)
-              return
-            end
-
-            -- Create a new vertical split
-            vim.api.nvim_command("vsplit")
-
-            -- Create a new temporary buffer
-            local new_buf = vim.api.nvim_create_buf(true, false)
-
-            -- Get the window ID of the new split
-            local new_win = vim.api.nvim_get_current_win()
-
-            -- Set the temporary buffer in the new split window
-            vim.api.nvim_win_set_buf(new_win, new_buf)
-
-            -- Set the buffer content to the expansion
-            vim.api.nvim_buf_set_lines(
-              new_buf,
-              0,
-              -1,
-              false,
-              vim.split(result.expansion, "\n")
-            )
-
-            -- Set the filetype to 'rust' for syntax highlighting
-            vim.api.nvim_buf_set_option(new_buf, "filetype", "rust")
-
-            -- Set the buffer to be unmodifiable
-            vim.api.nvim_buf_set_option(new_buf, "modifiable", false)
-            vim.api.nvim_buf_set_option(new_buf, "buftype", "nofile") -- Not associated with a file
-            vim.api.nvim_buf_set_option(new_buf, "bufhidden", "wipe") -- Wipe buffer when hidden
-            vim.api.nvim_buf_set_option(new_buf, "modified", false)
-          end
-        )
-      end,
-      { desc = 'expands macro under cursor' }
-    )
-  end
 });
 
 vim.lsp.config('ltex_plus', {
