@@ -21,7 +21,6 @@ return {
 
     mason_lspconfig.setup({
       ensure_installed = {
-        "rust_analyzer",
         "html",
         "cssls",
         "lua_ls",
