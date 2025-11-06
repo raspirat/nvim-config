@@ -28,8 +28,6 @@ return {
       },
     })
 
-    require("neomodern").load()
-
     -- for the spacer between bufferline and text
     vim.api.nvim_set_hl(0, 'WinBar', { fg = none, bg = none, sg = none, ctermbg = none, ctermfg = none })
     vim.api.nvim_set_hl(0, 'WinBarNc', { fg = none, bg = none, sg = none, ctermbg = none, ctermfg = none })
