@@ -85,7 +85,14 @@ return {
     end,
     -- remember to enable your providers here
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "vimtex" },
+      providers = {
+        vimtex = {
+          name = "vimtex",
+          module = "blink.compat.source",
+          score_offset = 100,
+        },
+      },
     },
     keymap = {
       ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },

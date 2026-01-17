@@ -1,10 +1,20 @@
-return {
-  "raspirat/vimtex",
-  lazy = false, -- we don't want to lazy load VimTeX
-  -- tag = "v2.15", -- uncomment to pin to a specific release
-  init = function()
-    -- VimTeX configuration goes here, e.g.
-    vim.g.vimtex_view_general_viewer = 'okular'
-    vim.g.vimtex_view_general_options = '--unique file:@pdf#src:@line@tex'
-  end
+local M = { "raspirat/vimtex" }
+
+M.lazy = false
+
+M.init = function()
+  vim.g.vimtex_view_general_viewer = 'okular'
+  vim.g.vimtex_view_general_options = '--unique file:@pdf#src:@line@tex'
+  vim.g.vimtex_view_automatic = 1
+end
+
+local E = { "micangl/cmp-vimtex" }
+
+E.dependencies = {
+  "saghen/blink.compat",
+  version = "*",
+  lazy = true,
+  opts = {},
 }
+
+return { M, E }
