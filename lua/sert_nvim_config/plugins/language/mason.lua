@@ -26,7 +26,6 @@ return {
         "lua_ls",
         "sqlls",
         "kotlin_language_server",
-        "arduino_language_server",
         "clangd",
       },
     })
